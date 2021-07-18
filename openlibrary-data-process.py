@@ -18,11 +18,11 @@ def write_row(record_type, row):
         csv_writers[record_type] = open_csv(record_type)
     csv_writers[record_type].writerow([row[0], row[1], row[2], row[3], row[4]])
 
-with open(err_output, 'w') as err_ouput_file:
+with open(err_output, 'w') as err_output_file:
     with open(input, 'r') as csvinputfile:
         csvreader = csv.reader(csvinputfile, delimiter='\t')
         for row in csvreader:
-            if len(row) > 4:
+            if len(row) == 5:
                 record_type = row[0].split("/")[2]
                 write_row(record_type, row)
             else:
