@@ -3,13 +3,17 @@ services:
   db:
     image: postgres
     restart: always
+    volumes:
+      - type: bind
+        source: ./docker_data/postgresql
+        target: /var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: test123!
     ports:
       - 5432:5432
 
-  adminer:
-    image: adminer
-    restart: always
-    ports: 
-      - 8080:8080
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports: 
+  #     - 8080:8080
